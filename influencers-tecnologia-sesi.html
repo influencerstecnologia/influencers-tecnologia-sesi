@@ -1,0 +1,1858 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Influencers de Tecnologia SESI</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+<style>
+/* ============================================================
+   VARIÁVEIS GLOBAIS — edite aqui para mudar cores do site
+   ============================================================ */
+:root {
+  --accent: #3B82F6;
+  --accent2: #8B5CF6;
+  --accent-glow: rgba(59,130,246,0.18);
+  --bg: #0A0C10;
+  --bg2: #10131A;
+  --bg3: #181C27;
+  --surface: #1E2333;
+  --surface2: #252B3B;
+  --border: rgba(255,255,255,0.08);
+  --border-accent: rgba(59,130,246,0.35);
+  --text: #EFF2FA;
+  --text2: #8A93B0;
+  --text3: #4D5673;
+  --radius: 14px;
+  --radius-sm: 8px;
+  --sidebar-w: 260px;
+  --font-head: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+[data-theme="light"] {
+  --bg: #F4F6FB;
+  --bg2: #FFFFFF;
+  --bg3: #E8EDF7;
+  --surface: #FFFFFF;
+  --surface2: #F0F3FC;
+  --border: rgba(0,0,0,0.08);
+  --border-accent: rgba(59,130,246,0.4);
+  --text: #0D1120;
+  --text2: #4B5675;
+  --text3: #9BA3BF;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}data
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  display:flex;
+  overflow-x:hidden;
+  transition:background .3s,color .3s;
+}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+img{max-width:100%;border-radius:var(--radius-sm)}
+ul{list-style:none}
+h1,h2,h3,h4{font-family:var(--font-head)}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+#sidebar{
+  width:var(--sidebar-w);
+  min-height:100vh;
+  background:var(--bg2);
+  border-right:1px solid var(--border);
+  display:flex;
+  flex-direction:column;
+  position:fixed;
+  top:0;left:0;
+  z-index:100;
+  transition:transform .3s ease;
+}
+.sidebar-logo{
+  padding:28px 24px 20px;
+  border-bottom:1px solid var(--border);
+}
+.sidebar-logo .logo-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#fff;
+  font-family:var(--font-head);
+  font-weight:800;
+  font-size:11px;
+  letter-spacing:.06em;
+  padding:5px 10px;
+  border-radius:6px;
+  margin-bottom:10px;
+  text-transform:uppercase;
+}
+.sidebar-logo h2{
+  font-size:15px;
+  font-weight:700;
+  color:var(--text);
+  line-height:1.3;
+}
+.sidebar-logo p{font-size:12px;color:var(--text2);margin-top:3px}
+
+.sidebar-nav{
+  flex:1;
+  padding:16px 12px;
+  overflow-y:auto;
+}
+.nav-section-label{
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--text3);
+  padding:10px 12px 6px;
+}
+.nav-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  border-radius:var(--radius-sm);
+  color:var(--text2);
+  font-size:14px;
+  font-weight:500;
+  cursor:pointer;
+  transition:all .2s;
+  margin-bottom:2px;
+  border:1px solid transparent;
+}
+.nav-item i{font-size:18px}
+.nav-item:hover{background:var(--surface);color:var(--text);border-color:var(--border)}
+.nav-item.active{background:var(--accent-glow);color:var(--accent);border-color:var(--border-accent)}
+.nav-item .badge{
+  margin-left:auto;
+  font-size:10px;
+  background:var(--accent);
+  color:#fff;
+  padding:2px 7px;
+  border-radius:20px;
+}
+
+.sidebar-footer{
+  padding:16px;
+  border-top:1px solid var(--border);
+}
+.user-card{
+  display:flex;align-items:center;gap:10px;
+  padding:10px;
+  border-radius:var(--radius-sm);
+  background:var(--surface);
+  cursor:pointer;
+  transition:background .2s;
+}
+.user-card:hover{background:var(--surface2)}
+.avatar{
+  width:34px;height:34px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:13px;color:#fff;
+  flex-shrink:0;
+}
+.user-info p{font-size:13px;font-weight:600;color:var(--text)}
+.user-info span{font-size:11px;color:var(--text2)}
+
+/* ============================================================
+   MAIN CONTENT AREA
+   ============================================================ */
+#main{
+  margin-left:var(--sidebar-w);
+  flex:1;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+/* ============================================================
+   TOPBAR
+   ============================================================ */
+#topbar{
+  position:sticky;top:0;z-index:90;
+  background:rgba(10,12,16,0.85);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  padding:12px 32px;
+  display:flex;align-items:center;gap:16px;
+}
+[data-theme="light"] #topbar{background:rgba(244,246,251,0.9)}
+#menu-toggle{
+  display:none;
+  padding:8px;border-radius:8px;
+  color:var(--text2);
+  transition:background .2s;
+}
+#menu-toggle:hover{background:var(--surface)}
+.search-bar{
+  flex:1;max-width:480px;
+  position:relative;
+}
+.search-bar i{
+  position:absolute;left:14px;top:50%;transform:translateY(-50%);
+  color:var(--text3);font-size:16px;
+}
+.search-bar input{
+  width:100%;
+  padding:10px 16px 10px 40px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  color:var(--text);
+  font-size:14px;
+  font-family:var(--font-body);
+  transition:border .2s,background .2s;
+  outline:none;
+}
+.search-bar input::placeholder{color:var(--text3)}
+.search-bar input:focus{border-color:var(--border-accent);background:var(--surface2)}
+
+.topbar-actions{
+  margin-left:auto;
+  display:flex;align-items:center;gap:8px;
+}
+.icon-btn{
+  width:38px;height:38px;
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--text2);
+  background:var(--surface);
+  border:1px solid var(--border);
+  font-size:18px;
+  transition:all .2s;
+}
+.icon-btn:hover{background:var(--surface2);color:var(--text);border-color:var(--border-accent)}
+
+/* ============================================================
+   PAGE SYSTEM — only one page visible at a time
+   ============================================================ */
+.page{display:none;padding:32px;animation:fadeIn .35s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ============================================================
+   HOME PAGE
+   ============================================================ */
+.hero{
+  position:relative;
+  padding:52px 48px;
+  border-radius:24px;
+  overflow:hidden;
+  background:var(--bg2);
+  border:1px solid var(--border);
+  margin-bottom:32px;
+}
+.hero::before{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse at 30% 50%,rgba(59,130,246,.15) 0%,transparent 70%),
+             radial-gradient(ellipse at 80% 30%,rgba(139,92,246,.1) 0%,transparent 60%);
+  pointer-events:none;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--accent-glow);
+  border:1px solid var(--border-accent);
+  color:var(--accent);
+  font-size:12px;font-weight:600;
+  letter-spacing:.05em;text-transform:uppercase;
+  padding:5px 12px;border-radius:20px;
+  margin-bottom:20px;
+}
+.hero h1{
+  font-size:clamp(24px,3.5vw,40px);
+  font-weight:800;
+  line-height:1.4em;
+  padding-bottom:16px;
+  margin: bottom 16px;px;
+  background:linear-gradient(150deg,var(--text) 50%,var(--accent));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+ 
+}
+.hero p{
+  font-size:16px;color:var(--text2);
+  max-width:560px;line-height:1.7;margin-bottom:28px;
+}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--accent);
+  color:#ffffff;
+  padding:11px 22px;
+  border-radius:var(--radius-sm);
+  font-size:14px;font-weight:600;
+  transition:opacity .2s,transform .2s;
+  font-family:var(--font-body);
+}
+.btn-primary:hover{opacity:.85;transform:translateY(-1px)}
+.btn-secondary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--surface);
+  color:var(--text);
+  border:1px solid var(--border);
+  padding:11px 22px;
+  border-radius:var(--radius-sm);
+  font-size:14px;font-weight:600;
+  transition:all .2s;
+  font-family:var(--font-body);
+}
+.btn-secondary:hover{background:var(--surface2);border-color:var(--border-accent)}
+
+.hero-stats{
+  display:flex;gap:32px;margin-top:32px;
+  padding-top:28px;
+  border-top:1px solid var(--border);
+  flex-wrap:wrap;
+}
+.hero-stat span{font-size:28px;font-weight:800;font-family:var(--font-head);color:var(--accent)}
+.hero-stat p{font-size:12px;color:var(--text2);margin-top:2px}
+
+/* Section header */
+.section-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:20px;
+}
+.section-header h2{font-size:20px;font-weight:700}
+.section-header a{font-size:13px;color:var(--accent);display:flex;align-items:center;gap:4px;cursor:pointer}
+
+/* Lab cards grid */
+.labs-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:16px;
+  margin-bottom:40px;
+}
+/* ============================================================
+   LAB CARD — editável: altere os dados em DATA_LABS abaixo
+   ============================================================ */
+.lab-card{
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:24px 20px;
+  cursor:pointer;
+  transition:all .25s;
+  position:relative;
+  overflow:hidden;
+}
+.lab-card::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--card-color, var(--accent));
+}
+.lab-card:hover{
+  border-color:var(--border-accent);
+  transform:translateY(-3px);
+  box-shadow:0 12px 32px rgba(0,0,0,.25);
+}
+.lab-icon{
+  width:48px;height:48px;
+  border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;
+  margin-bottom:16px;
+}
+.lab-card h3{font-size:15px;font-weight:700;margin-bottom:6px}
+.lab-card p{font-size:13px;color:var(--text2);line-height:1.5}
+.lab-card-footer{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-top:16px;
+  padding-top:12px;
+  border-top:1px solid var(--border);
+  font-size:12px;color:var(--text3);
+}
+.lab-card-footer i{color:var(--accent)}
+
+/* Projects grid */
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:20px;
+  margin-bottom:40px;
+}
+.project-card{
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  overflow:hidden;
+  cursor:pointer;
+  transition:all .25s;
+}
+.project-card:hover{border-color:var(--border-accent);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.25)}
+.project-thumb{
+  height:160px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:52px;
+  position:relative;
+  overflow:hidden;
+}
+.project-thumb::after{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 40%,var(--bg2));
+}
+.project-body{padding:20px}
+.project-body .tag{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  padding:3px 8px;border-radius:4px;
+  margin-bottom:10px;
+}
+.project-body h3{font-size:15px;font-weight:700;margin-bottom:6px}
+.project-body p{font-size:13px;color:var(--text2);line-height:1.5;margin-bottom:14px}
+.project-body .meta{
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:12px;color:var(--text3);
+}
+.project-body .meta i{font-size:14px}
+
+/* ============================================================
+   LABS PAGE (listagem de laboratórios)
+   ============================================================ */
+.filter-bar{
+  display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;
+}
+.filter-btn{
+  padding:7px 16px;
+  border-radius:20px;
+  font-size:13px;font-weight:500;
+  background:var(--surface);
+  color:var(--text2);
+  border:1px solid var(--border);
+  transition:all .2s;
+  font-family:var(--font-body);
+}
+.filter-btn:hover{background:var(--surface2);color:var(--text)}
+.filter-btn.active{background:var(--accent-glow);color:var(--accent);border-color:var(--border-accent)}
+
+/* ============================================================
+   LAB DETAIL PAGE
+   ============================================================ */
+.back-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  color:var(--text2);font-size:14px;
+  margin-bottom:24px;cursor:pointer;
+  transition:color .2s;
+}
+.back-btn:hover{color:var(--accent)}
+.lab-hero{
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:36px;
+  margin-bottom:28px;
+  position:relative;overflow:hidden;
+}
+.lab-hero::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:4px;
+  background:var(--card-color,var(--accent));
+}
+.lab-hero-header{display:flex;align-items:flex-start;gap:20px;margin-bottom:20px;flex-wrap:wrap}
+.lab-hero-icon{
+  width:72px;height:72px;
+  border-radius:18px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:36px;
+  flex-shrink:0;
+}
+.lab-hero h1{font-size:28px;font-weight:800;margin-bottom:8px}
+.lab-hero .desc{font-size:15px;color:var(--text2);line-height:1.6;max-width:640px}
+
+.tabs{
+  display:flex;gap:4px;
+  border-bottom:1px solid var(--border);
+  margin-bottom:28px;
+  overflow-x:auto;
+}
+.tab{
+  padding:10px 18px;
+  font-size:14px;font-weight:500;
+  color:var(--text2);
+  border-bottom:2px solid transparent;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:color .2s,border-color .2s;
+}
+.tab:hover{color:var(--text)}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+
+.content-section{display:none}
+.content-section.active{display:block;animation:fadeIn .3s ease}
+
+/* Máquinas/equipamentos */
+.machines-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:16px;margin-bottom:24px;
+}
+.machine-card{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--radius);padding:20px;
+  transition:all .25s;cursor:pointer;
+}
+.machine-card:hover{border-color:var(--border-accent);transform:translateY(-2px)}
+.machine-card .machine-icon{font-size:32px;margin-bottom:12px}
+.machine-card h4{font-size:14px;font-weight:700;margin-bottom:6px}
+.machine-card p{font-size:12px;color:var(--text2);line-height:1.5}
+.machine-card .status{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:11px;font-weight:600;
+  margin-top:12px;
+  padding:3px 8px;border-radius:4px;
+}
+.status-ok{background:rgba(34,197,94,.12);color:#22c55e}
+.status-warn{background:rgba(234,179,8,.12);color:#eab308}
+
+/* Tutoriais / passo a passo */
+.steps-list{display:flex;flex-direction:column;gap:16px}
+.step-item{
+  display:flex;gap:16px;
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--radius);padding:20px;
+}
+.step-num{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--accent-glow);border:1px solid var(--border-accent);
+  color:var(--accent);font-weight:800;font-size:15px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-family:var(--font-head);
+}
+.step-content h4{font-size:14px;font-weight:700;margin-bottom:6px}
+.step-content p{font-size:13px;color:var(--text2);line-height:1.6}
+
+/* Segurança */
+.safety-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:14px;
+}
+.safety-card{
+  background:rgba(239,68,68,.07);
+  border:1px solid rgba(239,68,68,.2);
+  border-radius:var(--radius);
+  padding:16px;
+  display:flex;gap:12px;align-items:flex-start;
+}
+.safety-card i{font-size:20px;color:#ef4444;flex-shrink:0;margin-top:2px}
+.safety-card p{font-size:13px;color:var(--text2);line-height:1.5}
+
+/* Vídeos */
+.videos-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:16px;
+}
+.video-card{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--radius);overflow:hidden;
+  cursor:pointer;transition:all .25s;
+}
+.video-card:hover{border-color:var(--border-accent);transform:translateY(-2px)}
+.video-thumb{
+  height:150px;
+  background:var(--surface);
+  display:flex;align-items:center;justify-content:center;
+  font-size:48px;
+  position:relative;
+}
+.play-btn{
+  position:absolute;
+  width:48px;height:48px;border-radius:50%;
+  background:rgba(59,130,246,.9);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:22px;
+  transition:transform .2s;
+}
+.video-card:hover .play-btn{transform:scale(1.1)}
+.video-card .video-info{padding:14px}
+.video-card .video-info h4{font-size:14px;font-weight:700;margin-bottom:4px}
+.video-card .video-info span{font-size:12px;color:var(--text3)}
+
+/* Downloads */
+.downloads-list{display:flex;flex-direction:column;gap:10px}
+.download-item{
+  display:flex;align-items:center;gap:14px;
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--radius-sm);padding:14px 18px;
+  transition:all .2s;cursor:pointer;
+}
+.download-item:hover{border-color:var(--border-accent)}
+.download-item i.file-icon{font-size:22px;color:var(--accent)}
+.download-item .file-info{flex:1}
+.download-item .file-info strong{font-size:14px;font-weight:600;display:block}
+.download-item .file-info span{font-size:12px;color:var(--text3)}
+.download-item .dl-btn{
+  display:flex;align-items:center;gap:6px;
+  background:var(--surface);border:1px solid var(--border);
+  color:var(--text2);font-size:13px;
+  padding:7px 14px;border-radius:var(--radius-sm);
+  transition:all .2s;
+  font-family:var(--font-body);
+}
+.download-item:hover .dl-btn{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* ============================================================
+   PROJECTS PAGE — sistema de projetos
+   ============================================================ */
+.project-detail{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--radius);padding:36px;
+  margin-bottom:24px;
+}
+
+/* ============================================================
+   ABOUT PAGE
+   ============================================================ */
+.about-hero{
+  text-align:center;
+  padding:48px 24px;
+  margin-bottom:32px;
+}
+.about-hero h1{font-size:40px;font-weight:800;margin-bottom:16px}
+.about-hero p{font-size:16px;color:var(--text2);max-width:600px;margin:0 auto;line-height:1.7}
+.team-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+  gap:16px;
+  margin-bottom:32px;
+}
+.team-card{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--radius);padding:24px 16px;
+  text-align:center;transition:all .25s;
+}
+.team-card:hover{border-color:var(--border-accent);transform:translateY(-3px)}
+.team-avatar{
+  width:64px;height:64px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:20px;color:#fff;
+  margin:0 auto 14px;
+}
+.team-card h4{font-size:14px;font-weight:700;margin-bottom:4px}
+.team-card span{font-size:12px;color:var(--text2)}
+
+/* ============================================================
+   LOGIN MODAL
+   ============================================================ */
+.modal-overlay{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.6);
+  backdrop-filter:blur(8px);
+  z-index:200;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity .3s;
+}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:40px;
+  width:100%;max-width:400px;
+  margin:16px;
+  transform:scale(.94);
+  transition:transform .3s;
+}
+.modal-overlay.open .modal{transform:scale(1)}
+.modal h2{font-size:24px;font-weight:800;margin-bottom:8px;text-align:center}
+.modal p{font-size:14px;color:var(--text2);text-align:center;margin-bottom:28px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--text2)}
+.form-group input{
+  width:100%;padding:11px 14px;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius-sm);color:var(--text);
+  font-size:14px;font-family:var(--font-body);outline:none;
+  transition:border .2s;
+}
+.form-group input:focus{border-color:var(--border-accent)}
+.form-group input::placeholder{color:var(--text3)}
+.modal .btn-primary{width:100%;justify-content:center;margin-top:8px;padding:13px}
+.modal-close{
+  position:absolute;top:16px;right:16px;
+  width:32px;height:32px;border-radius:50%;
+  background:var(--surface);color:var(--text2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;cursor:pointer;
+  border:1px solid var(--border);
+  transition:all .2s;
+}
+.modal-close:hover{background:var(--surface2);color:var(--text)}
+
+/* Notification panel */
+.notif-panel{
+  position:fixed;
+  top:64px;right:16px;
+  width:340px;
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:0 16px 40px rgba(0,0,0,.4);
+  z-index:300;
+  opacity:0;pointer-events:none;
+  transform:translateY(-8px) scale(.97);
+  transition:opacity .2s,transform .2s;
+}
+.notif-panel.open{opacity:1;pointer-events:all;transform:translateY(0) scale(1)}
+.notif-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 18px 12px;
+  border-bottom:1px solid var(--border);
+}
+.notif-header h3{font-size:15px;font-weight:700}
+.notif-header button{font-size:12px;color:var(--accent);cursor:pointer;font-family:var(--font-body)}
+.notif-item{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:14px 18px;
+  border-bottom:1px solid var(--border);
+  cursor:pointer;transition:background .2s;
+}
+.notif-item:last-child{border-bottom:none}
+.notif-item:hover{background:var(--surface)}
+.notif-item.unread{background:var(--accent-glow)}
+.notif-icon{
+  width:38px;height:38px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;flex-shrink:0;
+}
+.notif-body p{font-size:13px;color:var(--text);line-height:1.4;margin-bottom:3px}
+.notif-body span{font-size:11px;color:var(--text3)}
+.login-tabs{display:flex;gap:0;margin-bottom:24px;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border)}
+.login-tab{
+  flex:1;padding:10px;text-align:center;font-size:14px;font-weight:600;
+  cursor:pointer;transition:background .2s,color .2s;color:var(--text2);
+}
+.login-tab.active{background:var(--accent);color:#fff}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:768px){
+  #sidebar{transform:translateX(-100%)}
+  #sidebar.open{transform:translateX(0)}
+  #main{margin-left:0}
+  #menu-toggle{display:flex}
+  .page{padding:20px}
+  .hero{padding:28px 24px}
+  .labs-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+}
+
+/* ============================================================
+   MISC UTILITIES
+   ============================================================ */
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.chip{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:12px;font-weight:600;
+  padding:4px 10px;border-radius:20px;
+  background:var(--surface);border:1px solid var(--border);
+  color:var(--text2);
+}
+.page-title{font-size:28px;font-weight:800;margin-bottom:6px}
+.page-subtitle{font-size:15px;color:var(--text2);margin-bottom:28px}
+.empty{
+  text-align:center;padding:60px 20px;
+  color:var(--text3);
+}
+.empty i{font-size:48px;display:block;margin-bottom:12px}
+.empty p{font-size:15px}
+
+/* Favorites heart */
+.fav-btn{
+  width:32px;height:32px;border-radius:50%;
+  background:var(--surface);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--text3);font-size:16px;
+  transition:all .2s;cursor:pointer;
+}
+.fav-btn.active,.fav-btn:hover{color:#ef4444;background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.3)}
+
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:14px;margin-bottom:28px;
+}
+.info-card{
+  background:var(--surface);border-radius:var(--radius-sm);
+  padding:16px;border:1px solid var(--border);
+}
+.info-card .label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);margin-bottom:6px}
+.info-card .value{font-size:22px;font-weight:800;font-family:var(--font-head);color:var(--accent)}
+.info-card .desc{font-size:12px;color:var(--text2);margin-top:3px}
+
+/* Notification dot */
+.notif-dot{
+  position:relative;
+}
+.notif-dot::after{
+  content:'';
+  position:absolute;top:8px;right:8px;
+  width:7px;height:7px;border-radius:50%;
+  background:#ef4444;
+  border:2px solid var(--bg2);
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     SIDEBAR
+     ============================================================ -->
+<nav id="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-badge"><i class="ti ti-cpu"></i> SESI</div>
+    <h2>Influencers de Tecnologia</h2>
+    <p>Portal Educacional</p>
+  </div>
+  <div class="sidebar-nav">
+    <div class="nav-section-label">Principal</div>
+    <div class="nav-item active" onclick="navigate('home')"><i class="ti ti-home"></i> Home</div>
+    <div class="nav-item" onclick="navigate('labs')"><i class="ti ti-flask"></i> Laboratórios</div>
+    <div class="nav-item" onclick="navigate('projects')"><i class="ti ti-bulb"></i> Projetos <span class="badge">8</span></div>
+    <div class="nav-item" onclick="navigate('videos')"><i class="ti ti-player-play"></i> Vídeos</div>
+
+    <div class="nav-section-label" style="margin-top:12px">Laboratórios</div>
+    <!-- ===========================================================
+         MENU DE LABS — adicione novos itens aqui
+         =========================================================== -->
+    <div class="nav-item" onclick="openLab('fablab')"><i class="ti ti-cut"></i> FabLab</div>
+    <div class="nav-item" onclick="openLab('robotica')"><i class="ti ti-robot"></i> Robótica</div>
+    <div class="nav-item" onclick="openLab('impressao3d')"><i class="ti ti-box"></i> Impressão 3D</div>
+    <div class="nav-item" onclick="openLab('eletronica')"><i class="ti ti-circuit-board"></i> Eletrônica</div>
+    <div class="nav-item" onclick="openLab('programacao')"><i class="ti ti-code"></i> Programação</div>
+
+    <div class="nav-section-label" style="margin-top:12px">Mais</div>
+    <div class="nav-item" onclick="navigate('favorites')"><i class="ti ti-heart"></i> Favoritos</div>
+    <div class="nav-item" onclick="navigate('about')"><i class="ti ti-info-circle"></i> Sobre o Projeto</div>
+    <div class="nav-item" onclick="navigate('contact')"><i class="ti ti-mail"></i> Contato</div>
+  </div>
+  <div class="sidebar-footer">
+    <div class="user-card" onclick="openLogin()">
+      <div class="avatar">A</div>
+      <div class="user-info">
+        <p>Aluno SESI</p>
+        <span>Entrar / Cadastrar</span>
+      </div>
+      <i class="ti ti-chevron-right" style="margin-left:auto;color:var(--text3);font-size:16px"></i>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================
+     MAIN
+     ============================================================ -->
+<div id="main">
+  <!-- TOPBAR -->
+  <div id="topbar">
+    <button id="menu-toggle" onclick="toggleSidebar()"><i class="ti ti-menu-2" style="font-size:22px"></i></button>
+    <div class="search-bar">
+      <i class="ti ti-search"></i>
+      <input type="text" id="searchInput" placeholder="Buscar tutoriais, projetos, máquinas..." oninput="handleSearch(this.value)" />
+    </div>
+    <div class="topbar-actions">
+      <button class="icon-btn notif-dot" id="notifBtn" onclick="toggleNotif()" title="Notificações"><i class="ti ti-bell"></i></button>
+      <button class="icon-btn" onclick="toggleTheme()" title="Modo claro/escuro"><i class="ti ti-sun" id="themeIcon"></i></button>
+      <button class="icon-btn" onclick="openLogin()" title="Entrar"><i class="ti ti-user"></i></button>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       HOME PAGE
+       ============================================================ -->
+  <div class="page active" id="page-home">
+    <div class="hero">
+      <div class="hero-tag"><i class="ti ti-sparkles"></i> Plataforma Educacional SESI</div>
+      <h1 style="font-family: Arial;">Influencers de<br/>Tecnologia SESI</h1>
+      <p>Sua central de tutoriais, projetos e guias para os laboratórios da escola. Aprenda, explore e crie com as melhores ferramentas tecnológicas.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="navigate('labs')"><i class="ti ti-flask"></i> Explorar Labs</button>
+        <button class="btn-secondary" onclick="navigate('projects')"><i class="ti ti-bulb"></i> Ver Projetos</button>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><span>4</span><p>Laboratórios</p></div>
+        <div class="hero-stat"><span>0+</span><p>Tutoriais</p></div>
+        <div class="hero-stat"><span>0</span><p>Projetos</p></div>
+        <div class="hero-stat"><span>40+</span><p>Alunos</p></div>
+      </div>
+    </div>
+
+    <!-- Labs rápidos -->
+    <div class="section-header">
+      <h2>Laboratórios</h2>
+      <a onclick="navigate('labs')">Ver todos <i class="ti ti-arrow-right"></i></a>
+    </div>
+    <div class="labs-grid" id="homeLabs"></div>
+
+    <!-- Projetos recentes -->
+    <div class="section-header">
+      <h2>Projetos Recentes</h2>
+      <a onclick="navigate('projects')">Ver todos <i class="ti ti-arrow-right"></i></a>
+    </div>
+    <div class="projects-grid" id="homeProjects"></div>
+  </div>
+
+  <!-- ============================================================
+       LABS PAGE (listagem)
+       ============================================================ -->
+  <div class="page" id="page-labs">
+    <h1 class="page-title">Laboratórios</h1>
+    <p class="page-subtitle">Explore nossos espaços de criação e aprendizado</p>
+    <div class="labs-grid" id="allLabs"></div>
+  </div>
+
+  <!-- ============================================================
+       LAB DETAIL PAGE
+       ============================================================ -->
+  <div class="page" id="page-lab-detail">
+    <button class="back-btn" onclick="navigate('labs')"><i class="ti ti-arrow-left"></i> Voltar</button>
+    <div class="lab-hero" id="labDetailHero"></div>
+    <div class="tabs" id="labTabs"></div>
+    <div id="labContent"></div>
+  </div>
+
+  <!-- ============================================================
+       PROJECTS PAGE
+       ============================================================ -->
+  <div class="page" id="page-projects">
+    <h1 class="page-title">Projetos Escolares</h1>
+    <p class="page-subtitle">Trabalhos incríveis dos alunos do SESI</p>
+    <div class="filter-bar" id="projectFilters"></div>
+    <div class="projects-grid" id="allProjects"></div>
+  </div>
+
+  <!-- ============================================================
+       VIDEOS PAGE
+       ============================================================ -->
+  <div class="page" id="page-videos">
+    <h1 class="page-title">Vídeos Educacionais</h1>
+    <p class="page-subtitle">Tutoriais em vídeo para aprender no seu ritmo</p>
+    <div class="videos-grid" id="allVideos"></div>
+  </div>
+
+  <!-- ============================================================
+       FAVORITES PAGE
+       ============================================================ -->
+  <div class="page" id="page-favorites">
+    <h1 class="page-title">Favoritos</h1>
+    <p class="page-subtitle">Seus conteúdos salvos</p>
+    <div id="favoritesList"></div>
+  </div>
+
+  <!-- ============================================================
+       ABOUT PAGE
+       ============================================================ -->
+  <div class="page" id="page-about">
+    <div class="about-hero">
+      <div class="hero-tag" style="display:inline-flex;margin-bottom:16px"><i class="ti ti-info-circle"></i> Sobre</div>
+      <h1>O Projeto</h1>
+      <p>O <strong>Influencers de Tecnologia SESI</strong> é uma iniciativa educacional que transforma alunos em criadores e divulgadores de conhecimento tecnológico.</p>
+    </div>
+    <div class="info-grid">
+      <div class="info-card"><div class="label">Fundação</div><div class="value">2024</div><div class="desc">Ano de início do projeto</div></div>
+      <div class="info-card"><div class="label">Alunos</div><div class="value">40+</div><div class="desc">Participantes ativos</div></div>
+      <div class="info-card"><div class="label">Tutoriais</div><div class="value">0</div><div class="desc">Conteúdos publicados</div></div>
+      <div class="info-card"><div class="label">Labs</div><div class="value">5</div><div class="desc">Espaços disponíveis</div></div>
+    </div>
+    <div class="section-header"><h2>Nossa Equipe</h2></div>
+    <div class="team-grid">
+    <div class="team-card"><div class="team-avatar" style="background:linear-gradient(135deg,#06ef1a,#ea2250)">YX</div><h4>Yan Xavier</h4><span>x</span></div>
+        <div class="team-card"><div class="team-avatar" style="background:linear-gradient(135deg,#6b05be,#5919ee)">LL</div><h4>Larissa Lamerato</h4><span>x</span></div>
+      <div class="team-card"><div class="team-avatar" style="background:linear-gradient(135deg,#ff0800,#EC4899)">PB</div><h4>Pedro Bergara</h4><span>x</span></div>
+      <div class="team-card"><div class="team-avatar" style="background:linear-gradient(135deg,#10B981,#3B82F6)">JA</div><h4>Juan Araujo</h4><span>x</span></div>
+      <div class="team-card"><div class="team-avatar" style="background:linear-gradient(135deg,#F59E0B,#EF4444)">HT</div><h4>Henrique Teodoro</h4><span>x</span></div>
+      <div class="team-card"><div class="team-avatar" style="background:linear-gradient(135deg,#d50adc,#cbcfdd)">IV</div><h4>Isadora Ventura</h4><span>x</span></div>
+     <div class="team-card"><div class="team-avatar" style="background:linear-gradient(135deg,#06B6D4,#8B5CF6)">X</div><h4>x</h4><span>x</span></div>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin-top:8px">
+      <h2 style="font-size:20px;font-weight:700;margin-bottom:12px">Nossa Missão</h2>
+      <p style="color:var(--text2);line-height:1.8;font-size:15px">Empoderar alunos com conhecimento prático em tecnologia, criação digital e fabricação, desenvolvendo competências para o século 21 e transformando-os em protagonistas da inovação. Queremos que cada aluno seja um verdadeiro influencer da tecnologia em sua comunidade.</p>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       CONTACT PAGE
+       ============================================================ -->
+  <div class="page" id="page-contact">
+    <h1 class="page-title">Contato</h1>
+    <p class="page-subtitle">Fale com a equipe do projeto</p>
+    <div style="max-width:560px">
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:32px">
+        <div class="form-group"><label>Nome completo</label><input type="text" placeholder="Seu nome" /></div>
+        <div class="form-group"><label>E-mail</label><input type="email" placeholder="aluno@sesi.edu.br" /></div>
+        <div class="form-group"><label>Assunto</label>
+          <input type="text" placeholder="Dúvida, sugestão, elogio..." />
+        </div>
+        <div class="form-group"><label>Mensagem</label>
+          <textarea style="width:100%;padding:11px 14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-size:14px;font-family:var(--font-body);outline:none;resize:vertical;min-height:120px;transition:border .2s" placeholder="Escreva sua mensagem..." onfocus="this.style.borderColor='var(--border-accent)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+        </div>
+        <button class="btn-primary" onclick="alert('Mensagem enviada! Em breve entraremos em contato.')"><i class="ti ti-send"></i> Enviar mensagem</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SEARCH RESULTS PAGE
+       ============================================================ -->
+  <div class="page" id="page-search">
+    <h1 class="page-title">Resultados da busca</h1>
+    <p class="page-subtitle" id="searchSubtitle"></p>
+    <div id="searchResults"></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     NOTIFICATION PANEL
+     ============================================================ -->
+<div class="notif-panel" id="notifPanel">
+  <div class="notif-header">
+    <h3><i class="ti ti-bell" style="color:var(--accent)"></i> Notificações</h3>
+    <button onclick="markAllRead()">Marcar tudo como lido</button>
+  </div>
+  <div id="notifList">
+    <div class="notif-item unread" onclick="markRead(this)">
+      <div class="notif-icon" style="background:rgba(59,130,246,.15)">📦</div>
+      <div class="notif-body">
+        <p><strong>Impressão 3D</strong> — Nova Bambu Lab A1 disponível no laboratório!</p>
+        <span>Há 2 horas</span>
+      </div>
+    </div>
+    <div class="notif-item unread" onclick="markRead(this)">
+      <div class="notif-icon" style="background:rgba(139,92,246,.15)">🤖</div>
+      <div class="notif-body">
+        <p><strong>Robótica</strong> — Inscrições abertas para a competição estadual 2025.</p>
+        <span>Há 5 horas</span>
+      </div>
+    </div>
+    <div class="notif-item unread" onclick="markRead(this)">
+      <div class="notif-icon" style="background:rgba(16,185,129,.15)">✅</div>
+      <div class="notif-body">
+        <p><strong>Novo tutorial</strong> — "Python para iniciantes" publicado no lab de Programação.</p>
+        <span>Ontem</span>
+      </div>
+    </div>
+    <div class="notif-item" onclick="markRead(this)">
+      <div class="notif-icon" style="background:rgba(245,158,11,.15)">🔧</div>
+      <div class="notif-body">
+        <p><strong>Manutenção</strong> — Scanner 3D do FabLab em manutenção até sexta-feira.</p>
+        <span>2 dias atrás</span>
+      </div>
+    </div>
+    <div class="notif-item" onclick="markRead(this)">
+      <div class="notif-icon" style="background:rgba(239,68,68,.12)">🏆</div>
+      <div class="notif-body">
+        <p><strong>Parabéns!</strong> — Turma 3B venceu a feira de ciências com o Braço Robótico.</p>
+        <span>3 dias atrás</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     LOGIN MODAL
+     ============================================================ -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal" style="position:relative">
+    <button class="modal-close" onclick="closeLogin()"><i class="ti ti-x"></i></button>
+    <div style="text-align:center;margin-bottom:20px">
+      <div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:inline-flex;align-items:center;justify-content:center;font-size:28px;color:#fff;margin-bottom:12px"><i class="ti ti-cpu"></i></div>
+    </div>
+    <h2>Bem-vindo!</h2>
+    <p>Acesse a plataforma SESI</p>
+    <div class="login-tabs">
+      <div class="login-tab active" onclick="setLoginTab('aluno',this)">Aluno</div>
+      <div class="login-tab" onclick="setLoginTab('professor',this)">Professor</div>
+    </div>
+    <div class="form-group"><label>E-mail</label><input type="email" placeholder="aluno@sesi.edu.br" /></div>
+    <div class="form-group"><label>Senha</label><input type="password" placeholder="••••••••" /></div>
+    <button class="btn-primary" onclick="fakeLogin()"><i class="ti ti-login"></i> Entrar</button>
+    <p style="text-align:center;font-size:13px;color:var(--text3);margin-top:14px">Esqueceu a senha? <a style="color:var(--accent);cursor:pointer">Recuperar</a></p>
+  </div>
+</div>
+
+<!-- ============================================================
+     SIDEBAR OVERLAY (mobile)
+     ============================================================ -->
+<div id="sidebarOverlay" onclick="toggleSidebar()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:99;"></div>
+
+<script>
+// ================================================================
+// DATA — EDITE AQUI para atualizar conteúdo do site
+// ================================================================
+
+// -------------------------------------------------------------------
+// DATA_LABS — adicione/remova laboratórios aqui
+// Campos: id, name, desc, icon, color, bgColor, items (contagem)
+// -------------------------------------------------------------------
+const DATA_LABS = [
+  {
+    id: 'fablab',
+    name: 'FabLab',
+    desc: 'Fabricação digital, corte a laser, prototipagem rápida.',
+    icon: '✂️',
+    color: '#3B82F6',
+    bgColor: 'rgba(59,130,246,.12)',
+    tutorials: 0,
+    machines: 0,
+    // ---- Conteúdo do lab ----
+    fullDesc: 'O FabLab é um espaço de fabricação digital equipado com máquinas de última geração para criação de protótipos e produtos. Aqui você aprende desde o design digital até a fabricação física.',
+    machines_list: [
+      { name: 'Cortadora a Laser', icon: '🔧', desc: 'em desenvolvimento...', status: 'warn' },
+      { name: 'xxx', icon: '🔧', desc: 'em desenvolvimento...', status: 'warn'},
+      { name: 'xxx', icon: '🔧', desc: 'em desenvolvimento...', status: 'warn' },
+      { name: 'xxx', icon: '🔧', desc: 'em desenvolvimento...', status: 'warn' },
+    ],
+    steps: [
+      { title: 'Faça o agendamento', desc: 'em desenvolvimento...' },
+      { title: 'Prepare seu arquivo', desc: 'em desenvolvimento...' },
+      { title: 'Use EPI obrigatório', desc: 'em desenvolvimento...' },
+      { title: 'Realize o teste', desc: 'em desenvolvimento...' },
+      { title: 'Finalize e organize', desc: 'Após o uso, limpe a máquina e organize o espaço.' },
+    ],
+    safety: [
+      'Nunca deixe a cortadora a laser sem supervisão.',
+      'Use sempre os óculos de proteção.',
+      'Não corte PVC ou materiais que liberem vapores tóxicos.',
+      'Mantenha a área ventilada durante o uso.',
+      'Em caso de emergência, pressione o botão vermelho de parada.',
+      'Apenas alunos treinados podem operar as máquinas.',
+    ],
+    videos: [
+      { title: 'Introdução à Cortadora a Laser', duration: 'x min', emoji: '⚡' },
+      { title: 'Como preparar arquivos no Inkscape', duration: 'x min', emoji: '🎨' },
+      { title: 'Projeto completo no FabLab', duration: 'x min', emoji: '🏗️' },
+    ],
+    downloads: [
+      { name: 'Manual da Cortadora a Laser', size: '2.4 MB', type: 'PDF' },
+      { name: 'Template SVG para projetos', size: '180 KB', type: 'SVG' },
+      { name: 'Normas de segurança FabLab', size: '540 KB', type: 'PDF' },
+    ],
+  },
+  {
+    id: 'robotica',
+    name: 'EM PROGRAMAÇÃO...',
+    desc: 'Montagem, programação e competição com robôs educacionais.',
+    icon: '🤖',
+    color: '#8B5CF6',
+    bgColor: 'rgba(139,92,246,.12)',
+    tutorials: 8,
+    machines: 4,
+    fullDesc: 'O laboratório de Robótica oferece kits LEGO Mindstorms, Arduino e componentes eletrônicos para construção e programação de robôs. Participamos de competições estaduais e nacionais.',
+    machines_list: [
+      { name: 'Kit LEGO Mindstorms', icon: '🧱', desc: 'Kits completos para montagem e programação de robôs LEGO.', status: 'ok' },
+      { name: 'Arduino Mega / Uno', icon: '🔌', desc: 'Microcontroladores para projetos de robótica e automação.', status: 'ok' },
+      { name: 'Kit Raspberry Pi', icon: '🍓', desc: 'Mini-computadores para projetos avançados de IA e robótica.', status: 'ok' },
+      { name: 'Drone Educacional', icon: '🚁', desc: 'Drone para aprendizado de pilotagem e programação.', status: 'warn' },
+    ],
+    steps: [
+      { title: 'Escolha o kit', desc: 'Selecione o kit adequado ao seu nível: iniciante (LEGO) ou avançado (Arduino).' },
+      { title: 'Planeje o robô', desc: 'Desenhe o projeto antes de montar. Defina sensores, atuadores e missão.' },
+      { title: 'Monte e programe', desc: 'Use Scratch, mBlock ou C++ para programar. Teste cada parte separadamente.' },
+      { title: 'Teste e ajuste', desc: 'Realize testes em pista real e ajuste o código conforme necessário.' },
+    ],
+    safety: [
+      'Não force conexões elétricas.',
+      'Verifique a polaridade antes de ligar qualquer circuito.',
+      'Guarde os componentes nos kits após o uso.',
+      'Não deixe robôs ligados sem supervisão.',
+    ],
+    videos: [
+      { title: 'Primeiros passos com Arduino', duration: '15 min', emoji: '🔌' },
+      { title: 'Programando robô LEGO com Scratch', duration: '22 min', emoji: '🧱' },
+      { title: 'Robô seguidor de linha', duration: '30 min', emoji: '🤖' },
+    ],
+    downloads: [
+      { name: 'Guia Arduino para iniciantes', size: '3.1 MB', type: 'PDF' },
+      { name: 'Código robô seguidor de linha', size: '12 KB', type: 'INO' },
+    ],
+  },
+  {
+    id: 'impressao3d',
+    name: 'Impressão 3D',
+    desc: 'Modelagem e impressão de objetos em polímero FDM e resina.',
+    icon: '📦',
+    color: '#10B981',
+    bgColor: 'rgba(16,185,129,.12)',
+    tutorials: 5,
+    machines: 3,
+    fullDesc: 'Nosso laboratório de Impressão 3D conta com impressoras FDM e de resina para prototipagem. Aprenda desde o design no Tinkercad até a impressão e pós-processamento.',
+    machines_list: [
+      { name: 'Creality Ender 3 Pro', icon: '🖨️', desc: 'Impressora FDM com área de impressão 220x220x250mm.', status: 'ok' },
+      { name: 'Bambu Lab A1', icon: '🎯', desc: 'Impressora FDM de alta velocidade com sistema multifilamento.', status: 'ok' },
+      { name: 'Elegoo Mars 4', icon: '💡', desc: 'Impressora de resina UV para peças de alta resolução.', status: 'warn' },
+    ],
+    steps: [
+      { title: 'Crie ou baixe o modelo', desc: 'Use Tinkercad, Fusion 360 ou baixe do Thingiverse. Formato: .STL ou .3MF.' },
+      { title: 'Fatie no software', desc: 'Use Cura ou Bambu Studio para fatiar e configurar o perfil de impressão.' },
+      { title: 'Prepare a impressora', desc: 'Nivele a mesa, carregue o filamento e faça um teste de extrusão.' },
+      { title: 'Monitore a impressão', desc: 'Verifique as primeiras camadas. Não deixe impressões longas sem monitoramento.' },
+      { title: 'Pós-processamento', desc: 'Remova suportes, lixe e pinte se necessário.' },
+    ],
+    safety: [
+      'Não toque no bico extrusor durante a impressão (250°C+).',
+      'Mantenha boa ventilação ao imprimir com ABS.',
+      'Use luvas ao manipular resina líquida.',
+      'Cure a resina completamente antes de manusear as peças.',
+    ],
+    videos: [
+      { title: 'Como usar o Tinkercad do zero', duration: '20 min', emoji: '🎨' },
+      { title: 'Configurando o Cura para iniciantes', duration: '14 min', emoji: '⚙️' },
+    ],
+    downloads: [
+      { name: 'Perfis Cura para Ender 3', size: '45 KB', type: 'INI' },
+      { name: 'Guia de materiais FDM', size: '1.8 MB', type: 'PDF' },
+    ],
+  },
+  {
+    id: 'eletronica',
+    name: 'EM PROGRAMAÇÃO',
+    desc: 'Circuitos, soldagem, componentes e projetos eletrônicos.',
+    icon: '⚡',
+    color: '#F59E0B',
+    bgColor: 'rgba(245,158,11,.12)',
+    tutorials: 7,
+    machines: 6,
+    fullDesc: 'O laboratório de Eletrônica é equipado com osciloscópios, multímetros, fontes reguláveis e estações de solda para desenvolvimento de circuitos e projetos eletrônicos.',
+    machines_list: [
+      { name: 'Osciloscópio Digital', icon: '📊', desc: 'Análise de sinais elétricos e debug de circuitos.', status: 'ok' },
+      { name: 'Estação de Solda', icon: '🔥', desc: 'Soldagem de componentes SMD e through-hole.', status: 'ok' },
+      { name: 'Fonte Regulável', icon: '🔋', desc: 'Alimentação controlada de 0-30V 5A para testes.', status: 'ok' },
+      { name: 'Multímetro Digital', icon: '📏', desc: 'Medição de tensão, corrente e resistência.', status: 'ok' },
+    ],
+    steps: [
+      { title: 'Estude o esquemático', desc: 'Analise o circuito antes de montar. Use o Falstad para simular.' },
+      { title: 'Monte na protoboard', desc: 'Teste o circuito na protoboard antes de soldar.' },
+      { title: 'Solde com cuidado', desc: 'Aqui a estação de solda a 350°C. Solde componentes maiores primeiro.' },
+      { title: 'Teste e meça', desc: 'Use multímetro e osciloscópio para verificar os sinais.' },
+    ],
+    safety: [
+      'Nunca trabalhe com circuitos energizados durante montagem.',
+      'Use óculos ao soldar.',
+      'Verifique polaridade de capacitores e diodos antes de ligar.',
+      'Nunca conecte mais de 5V em microcontroladores de 3.3V.',
+    ],
+    videos: [
+      { title: 'Aprenda a soldar do zero', duration: '18 min', emoji: '🔥' },
+      { title: 'Como usar o osciloscópio', duration: '24 min', emoji: '📊' },
+    ],
+    downloads: [
+      { name: 'Apostila de ...', size: '5.2 MB', type: 'PDF' },
+      { name: 'Tabela de ...', size: '320 KB', type: 'PDF' },
+    ],
+  },
+  {
+    id: 'LMT',
+    name: 'LMT - Laboratório de Multimídia e Tecnologia',
+    desc: 'Criações de slides, apresentações e projetos tecnológicos.',
+    icon: '💻',
+    color: '#06B6D4',
+    bgColor: 'rgba(6,182,212,.12)',
+    tutorials: 0,
+    machines: 0,
+    fullDesc: 'O Laboratório LMT oferece Notebooks e PCs com todas as ferramentas pacote office instaladas: Word, Excel, PowerPoint, além de acesso à internet para pesquisas e desenvolvimento de projetos escolares.',
+    machines_list: [
+      { name: 'Notebooks Lenovo/...', icon: '🖥️', desc: '20 computadores configurados para desenvolvimento.', status: 'warn' },
+      { name: 'Servidor Local', icon: '🗄️', desc: 'Servidor para hospedagem de projetos internos.', status: 'warn' },
+    ],
+    steps: [
+      { title: 'Escolha o percurso', desc: 'xxx' },
+      { title: 'Configure o ambiente', desc: 'xxx' },
+      { title: 'Complete os exercícios', desc: 'xxx' },
+      { title: 'Crie seu projeto', desc: 'Todo aluno deve criar um projeto ao final do semestre.' },
+    ],
+    safety: [
+      'Não instale softwares sem autorização do professor.',
+      'Não acesse sites não relacionados ao aprendizado.',
+      'Faça backup dos seus projetos regularmente.',
+    ],
+    videos: [
+      { title: '...', duration: '0 min', emoji: '🐍' },
+      { title: '...', duration: '0 min', emoji: '🌐' },
+      { title: '...', duration: '0 min', emoji: '🎮' },
+    ],
+    downloads: [
+      { name: '...', size: '890 KB', type: 'PDF' },
+      { name: '...', size: '1.1 MB', type: 'PDF' },
+    ],
+  },
+];
+
+// -------------------------------------------------------------------
+// DATA_PROJECTS — adicione/remova projetos aqui
+// -------------------------------------------------------------------
+const DATA_PROJECTS = [
+  {
+    id: 1,
+    title: 'EM DESENVOLVIMENTO.',
+    desc: 'Braço mecânico controlado via app mobile usando Arduino e servomotores.',
+    category: 'Robótica',
+    emoji: '🦾',
+    bgColor: 'rgba(139,92,246,.15)',
+    author: 'Turma X',
+    materials: ['Arduino Mega', '6x Servomotores', 'Impressão 3D', 'App MIT App Inventor'],
+    steps: ['Modelar as peças no Fusion 360', 'Imprimir as peças no FabLab', 'Montar a estrutura', 'Conectar os servos ao Arduino', 'Programar o controle', 'Testar e calibrar'],
+    year: '2024',
+  },
+  {
+    id: 2,
+    title: 'EM DESENVOLVIMENTO.',
+    desc: 'Maquete de casa com automação usando ESP32 e sensores.',
+    category: 'Eletrônica',
+    emoji: '🏠',
+    bgColor: 'rgba(245,158,11,.15)',
+    author: 'Turma X',
+    materials: ['ESP32', 'Sensores DHT22', 'Relés', 'Maquete MDF'],
+    steps: ['Montar a maquete', 'Instalar os sensores', 'Programar o ESP32', 'Configurar o app'],
+    year: '2024',
+  },
+  {
+    id: 3,
+    title: 'EM DESENVOLVIMENTO.',
+    desc: 'Construção de uma impressora 3D tipo delta com peças impressas e eletrônica montada pelos alunos.',
+    category: 'Impressão 3D',
+    emoji: '🖨️',
+    bgColor: 'rgba(16,185,129,.15)',
+    author: 'Turma X',
+    materials: ['Perfis de alumínio', 'Motores de passo', 'RAMPS 1.4', 'Extrusor E3D'],
+    steps: ['Comprar componentes', 'Imprimir as peças estruturais', 'Montar o frame', 'Instalar a eletrônica', 'Calibrar e testar'],
+    year: '2024',
+  },
+  {
+    id: 4,
+    title: 'EM DESENVOLVIMENTO.',
+    desc: 'Aplicativo web para controle de presença e tarefas desenvolvido em Python + Flask.',
+    category: 'Programação',
+    emoji: '📱',
+    bgColor: 'rgba(6,182,212,.15)',
+    author: 'Turma X',
+    materials: ['Python', 'Flask', 'SQLite', 'HTML/CSS'],
+    steps: ['Levantar requisitos', 'Desenhar o banco de dados', 'Desenvolver o backend', 'Criar o frontend', 'Testar e publicar'],
+    year: '2024',
+  },
+  {
+    id: 5,
+    title: 'EM DESENVOLVIMENTO.',
+    desc: 'Placas decorativas para salas cortadas a laser com design personalizado.',
+    category: 'FabLab',
+    emoji: '✨',
+    bgColor: 'rgba(59,130,246,.15)',
+    author: 'Turma X',
+    materials: ['Madeira MDF 3mm', 'Acrílico', 'Tinta spray'],
+    steps: ['Criar o design no Inkscape', 'Configurar a cortadora', 'Cortar o material', 'Pintar e finalizar'],
+    year: '2024',
+  },
+  {
+    id: 6,
+    title: 'EM DESENVOLVIMENTO.',
+    desc: 'Jogo 2D desenvolvido em Python com Pygame pelos alunos do clube de programação.',
+    category: 'Programação',
+    emoji: '🚀',
+    bgColor: 'rgba(139,92,246,.15)',
+    author: 'Turma X',
+    materials: ['Python 3.12', 'Pygame', 'Aseprite (pixel art)'],
+    steps: ['Game design', 'Arte em pixel', 'Programar a nave', 'Adicionar inimigos', 'Sons e música', 'Publicar no itch.io'],
+    year: '2024',
+  },
+  {
+    id: 7,
+    title: 'EM DESENVOLVIMENTO.',
+    desc: 'Estação para monitoramento climático com Arduino e painel web em tempo real.',
+    category: 'Eletrônica',
+    emoji: '🌡️',
+    bgColor: 'rgba(245,158,11,.15)',
+    author: 'Turma X',
+    materials: ['Arduino UNO', 'Sensor BMP280', 'Sensor de umidade', 'OLED 128x64'],
+    steps: ['Montar o circuito', 'Programar os sensores', 'Criar o painel web', 'Instalar na escola'],
+    year: '2024',
+  },
+  {
+    id: 8,
+    title: 'EM DESENVOLVIMENTO.',
+    desc: 'Robô autônomo que segue linhas usando sensores infravermelhos e Arduino.',
+    category: 'Robótica',
+    emoji: '🏎️',
+    bgColor: 'rgba(16,185,129,.15)',
+    author: 'Turma X',
+    materials: ['Arduino Nano', 'Sensores IR', 'Ponte H L298N', 'Chassi impresso'],
+    steps: ['Imprimir o chassi', 'Montar os motores', 'Soldar os sensores', 'Programar o PID', 'Calibrar na pista'],
+    year: '2024',
+  },
+];
+
+// -------------------------------------------------------------------
+// DATA_VIDEOS — adicione vídeos aqui (links do YouTube)
+// -------------------------------------------------------------------
+const DATA_VIDEOS = [
+  { title: 'Como usar a Cortadora a Laser', lab: 'FabLab', duration: ' X min', emoji: '⚡', url: 'https://youtube.com' },
+  { title: 'Arduino do zero para iniciantes', lab: 'Robótica', duration: 'X min', emoji: '🔌', url: 'https://youtube.com' },
+  { title: 'Modelagem 3D no Tinkercad', lab: 'Impressão 3D', duration: 'X min', emoji: '📦', url: 'https://youtube.com' },
+  { title: 'Python básico — Variáveis e funções', lab: 'Programação', duration: 'X min', emoji: '🐍', url: 'https://youtube.com' },
+  { title: 'Aprenda a soldar componentes', lab: 'Eletrônica', duration: 'X min', emoji: '🔥', url: 'https://youtube.com' },
+  { title: 'Impressão 3D do início ao fim', lab: 'Impressão 3D', duration: ' X min', emoji: '🖨️', url: 'https://youtube.com' },
+  { title: 'HTML e CSS em 1 hora', lab: 'Programação', duration: '58 min', emoji: '🌐', url: 'https://youtube.com' },
+  { title: 'Sensor ultrassônico com Arduino', lab: 'Robótica', duration: 'X min', emoji: '📡', url: 'https://youtube.com' },
+];
+
+// ================================================================
+// ESTADO DO APP
+// ================================================================
+let currentPage = 'home';
+let favorites = JSON.parse(localStorage.getItem('sesi_favs') || '[]');
+let currentLab = null;
+
+// ================================================================
+// NAVEGAÇÃO
+// ================================================================
+function navigate(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  currentPage = page;
+  // Highlight nav
+  const navMap = { home: 0, labs: 1, projects: 2, videos: 3, favorites: 7, about: 8, contact: 9 };
+  const items = document.querySelectorAll('.nav-item');
+  // Mark active by onclick content
+  items.forEach(item => {
+    if (item.getAttribute('onclick') === `navigate('${page}')`) item.classList.add('active');
+  });
+  // Render pages
+  if (page === 'home') renderHome();
+  if (page === 'labs') renderLabs();
+  if (page === 'projects') renderProjects();
+  if (page === 'videos') renderVideos();
+  if (page === 'favorites') renderFavorites();
+  // Close sidebar on mobile
+  if (window.innerWidth <= 768) {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebarOverlay').style.display = 'none';
+  }
+  window.scrollTo(0, 0);
+}
+
+function openLab(id) {
+  const lab = DATA_LABS.find(l => l.id === id);
+  if (!lab) return;
+  currentLab = lab;
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-lab-detail').classList.add('active');
+  renderLabDetail(lab);
+  window.scrollTo(0, 0);
+}
+
+// ================================================================
+// RENDER HOME
+// ================================================================
+function renderHome() {
+  // Labs cards
+  const gl = document.getElementById('homeLabs');
+  gl.innerHTML = DATA_LABS.map(lab => labCardHTML(lab)).join('');
+  // Projects
+  const gp = document.getElementById('homeProjects');
+  gp.innerHTML = DATA_PROJECTS.slice(0, 3).map(p => projectCardHTML(p)).join('');
+}
+
+function labCardHTML(lab) {
+  return `
+  <div class="lab-card" style="--card-color:${lab.color}" onclick="openLab('${lab.id}')">
+    <div class="lab-icon" style="background:${lab.bgColor};color:${lab.color};font-size:28px">${lab.icon}</div>
+    <h3>${lab.name}</h3>
+    <p>${lab.desc}</p>
+    <div class="lab-card-footer">
+      <span><i class="ti ti-book"></i> ${lab.tutorials} tutoriais</span>
+      <span>${lab.machines} máquinas</span>
+    </div>
+  </div>`;
+}
+
+function projectCardHTML(p) {
+  const isFav = favorites.includes(p.id);
+  const catLab = DATA_LABS.find(l => l.name === p.category);
+  const tagColor = catLab ? catLab.color : '#3B82F6';
+  const tagBg = catLab ? catLab.bgColor : 'rgba(59,130,246,.12)';
+  return `
+  <div class="project-card" onclick="openProject(${p.id})">
+    <div class="project-thumb" style="background:${p.bgColor}">${p.emoji}</div>
+    <div class="project-body">
+      <div class="tag" style="background:${tagBg};color:${tagColor}">${p.category}</div>
+      <h3>${p.title}</h3>
+      <p>${p.desc}</p>
+      <div class="meta">
+        <span><i class="ti ti-users"></i> ${p.author}</span>
+        <button class="fav-btn ${isFav ? 'active' : ''}" onclick="event.stopPropagation();toggleFav(${p.id},this)">
+          <i class="ti ti-heart${isFav ? '-filled' : ''}"></i>
+        </button>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ================================================================
+// RENDER LABS
+// ================================================================
+function renderLabs() {
+  document.getElementById('allLabs').innerHTML = DATA_LABS.map(lab => labCardHTML(lab)).join('');
+}
+
+// ================================================================
+// RENDER LAB DETAIL
+// ================================================================
+function renderLabDetail(lab) {
+  // Hero
+  document.getElementById('labDetailHero').style.setProperty('--card-color', lab.color);
+  document.getElementById('labDetailHero').innerHTML = `
+    <div class="lab-hero-header">
+      <div class="lab-hero-icon" style="background:${lab.bgColor};color:${lab.color};font-size:36px">${lab.icon}</div>
+      <div>
+        <div class="chips">
+          <span class="chip"><i class="ti ti-book"></i> ${lab.tutorials} tutoriais</span>
+          <span class="chip"><i class="ti ti-tools"></i> ${lab.machines_list.length} máquinas</span>
+        </div>
+        <h1>${lab.name}</h1>
+        <p class="desc">${lab.fullDesc}</p>
+      </div>
+    </div>
+  `;
+
+  // Tabs
+  const tabNames = ['Máquinas', 'Tutoriais', 'Segurança', 'Vídeos', 'Downloads'];
+  document.getElementById('labTabs').innerHTML = tabNames.map((t, i) =>
+    `<div class="tab ${i === 0 ? 'active' : ''}" onclick="switchTab(${i}, this)">${t}</div>`
+  ).join('');
+
+  // Content sections
+  document.getElementById('labContent').innerHTML = `
+    <!-- Máquinas -->
+    <div class="content-section active">
+      <div class="machines-grid">
+        ${lab.machines_list.map(m => `
+          <div class="machine-card">
+            <div class="machine-icon">${m.icon}</div>
+            <h4>${m.name}</h4>
+            <p>${m.desc}</p>
+            <div class="status ${m.status === 'ok' ? 'status-ok' : 'status-warn'}">
+              <i class="ti ti-circle-filled" style="font-size:8px"></i>
+              ${m.status === 'ok' ? 'Disponível' : 'Em manutenção'}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <!-- Tutoriais -->
+    <div class="content-section">
+      <div class="steps-list">
+        ${lab.steps.map((s, i) => `
+          <div class="step-item">
+            <div class="step-num">${i + 1}</div>
+            <div class="step-content">
+              <h4>${s.title}</h4>
+              <p>${s.desc}</p>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <!-- Segurança -->
+    <div class="content-section">
+      <div class="safety-grid">
+        ${lab.safety.map(s => `
+          <div class="safety-card">
+            <i class="ti ti-alert-triangle"></i>
+            <p>${s}</p>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <!-- Vídeos -->
+    <div class="content-section">
+      <div class="videos-grid">
+        ${lab.videos.map(v => `
+          <div class="video-card" onclick="alert('Abrindo vídeo: ${v.title}')">
+            <div class="video-thumb">${v.emoji}
+              <div class="play-btn"><i class="ti ti-player-play-filled"></i></div>
+            </div>
+            <div class="video-info">
+              <h4>${v.title}</h4>
+              <span><i class="ti ti-clock"></i> ${v.duration}</span>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <!-- Downloads -->
+    <div class="content-section">
+      <div class="downloads-list">
+        ${lab.downloads.map(d => `
+          <div class="download-item" onclick="alert('Baixando: ${d.name}')">
+            <i class="ti ti-file-text file-icon"></i>
+            <div class="file-info">
+              <strong>${d.name}</strong>
+              <span>${d.type} • ${d.size}</span>
+            </div>
+            <button class="dl-btn"><i class="ti ti-download"></i> Baixar</button>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function switchTab(idx, el) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.content-section')[idx].classList.add('active');
+}
+
+// ================================================================
+// RENDER PROJECTS
+// ================================================================
+function renderProjects(filter) {
+  const categories = ['Todos', ...new Set(DATA_PROJECTS.map(p => p.category))];
+  const filtersEl = document.getElementById('projectFilters');
+  filtersEl.innerHTML = categories.map(c =>
+    `<button class="filter-btn ${(!filter && c === 'Todos') || filter === c ? 'active' : ''}" onclick="renderProjects('${c === 'Todos' ? '' : c}')">${c}</button>`
+  ).join('');
+
+  const filtered = filter ? DATA_PROJECTS.filter(p => p.category === filter) : DATA_PROJECTS;
+  document.getElementById('allProjects').innerHTML = filtered.map(p => projectCardHTML(p)).join('');
+}
+
+// ================================================================
+// PROJECT DETAIL MODAL (inline)
+// ================================================================
+function openProject(id) {
+  const p = DATA_PROJECTS.find(x => x.id === id);
+  if (!p) return;
+  document.querySelectorAll('.page').forEach(pg => pg.classList.remove('active'));
+  const detail = document.getElementById('page-projects');
+  detail.classList.add('active');
+
+  const catLab = DATA_LABS.find(l => l.name === p.category);
+  const tagColor = catLab ? catLab.color : '#3B82F6';
+  const tagBg = catLab ? catLab.bgColor : 'rgba(59,130,246,.12)';
+
+  detail.innerHTML = `
+    <button class="back-btn" onclick="navigate('projects')"><i class="ti ti-arrow-left"></i> Voltar</button>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:24px">
+      <div style="height:220px;background:${p.bgColor};display:flex;align-items:center;justify-content:center;font-size:80px">${p.emoji}</div>
+      <div style="padding:32px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap">
+          <div class="tag" style="background:${tagBg};color:${tagColor};font-size:12px;padding:4px 10px;border-radius:4px;font-weight:700;letter-spacing:.05em;text-transform:uppercase">${p.category}</div>
+          <span style="font-size:13px;color:var(--text3)"><i class="ti ti-users"></i> ${p.author}</span>
+          <span style="font-size:13px;color:var(--text3)"><i class="ti ti-calendar"></i> ${p.year}</span>
+        </div>
+        <h1 style="font-size:32px;font-weight:800;margin-bottom:12px">${p.title}</h1>
+        <p style="font-size:16px;color:var(--text2);line-height:1.7;margin-bottom:28px">${p.desc}</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;flex-wrap:wrap">
+          <div>
+            <h3 style="font-size:16px;font-weight:700;margin-bottom:14px"><i class="ti ti-tools" style="color:${tagColor}"></i> Materiais</h3>
+            <ul style="display:flex;flex-direction:column;gap:8px">
+              ${p.materials.map(m => `<li style="display:flex;align-items:center;gap:8px;font-size:14px;color:var(--text2)"><i class="ti ti-check" style="color:#22c55e"></i>${m}</li>`).join('')}
+            </ul>
+          </div>
+          <div>
+            <h3 style="font-size:16px;font-weight:700;margin-bottom:14px"><i class="ti ti-list-numbers" style="color:${tagColor}"></i> Passo a passo</h3>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              ${p.steps.map((s, i) => `
+                <div style="display:flex;align-items:flex-start;gap:10px">
+                  <span style="width:22px;height:22px;border-radius:50%;background:${tagBg};color:${tagColor};font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--font-head)">${i+1}</span>
+                  <span style="font-size:13px;color:var(--text2);line-height:1.5">${s}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:28px;padding-top:24px;border-top:1px solid var(--border);display:flex;gap:12px;flex-wrap:wrap">
+          <button class="btn-primary" onclick="alert('Projeto aberto!')"><i class="ti ti-external-link"></i> Abrir Projeto</button>
+          <button class="btn-secondary" onclick="alert('Download iniciado!')"><i class="ti ti-download"></i> Baixar Arquivos</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ================================================================
+// RENDER VIDEOS
+// ================================================================
+function renderVideos() {
+  document.getElementById('allVideos').innerHTML = DATA_VIDEOS.map(v => `
+    <div class="video-card" onclick="window.open('${v.url}','_blank')">
+      <div class="video-thumb">${v.emoji}
+        <div class="play-btn"><i class="ti ti-player-play-filled"></i></div>
+      </div>
+      <div class="video-info">
+        <h4>${v.title}</h4>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px">
+          <span style="color:var(--text3);font-size:12px">${v.lab}</span>
+          <span style="color:var(--text3);font-size:12px"><i class="ti ti-clock"></i> ${v.duration}</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ================================================================
+// FAVORITES
+// ================================================================
+function toggleFav(id, btn) {
+  if (favorites.includes(id)) {
+    favorites = favorites.filter(f => f !== id);
+    btn.classList.remove('active');
+    btn.querySelector('i').className = 'ti ti-heart';
+  } else {
+    favorites.push(id);
+    btn.classList.add('active');
+    btn.querySelector('i').className = 'ti ti-heart-filled';
+  }
+  localStorage.setItem('sesi_favs', JSON.stringify(favorites));
+}
+
+function renderFavorites() {
+  const el = document.getElementById('favoritesList');
+  if (favorites.length === 0) {
+    el.innerHTML = `<div class="empty"><i class="ti ti-heart"></i><p>Nenhum favorito ainda.<br>Clique no coração nos projetos para salvar.</p></div>`;
+    return;
+  }
+  const favProjects = DATA_PROJECTS.filter(p => favorites.includes(p.id));
+  el.innerHTML = `<div class="projects-grid">${favProjects.map(p => projectCardHTML(p)).join('')}</div>`;
+}
+
+// ================================================================
+// SEARCH
+// ================================================================
+function handleSearch(query) {
+  if (!query || query.trim().length < 2) {
+    if (currentPage === 'search') navigate('home');
+    return;
+  }
+  const q = query.toLowerCase();
+  const matchLabs = DATA_LABS.filter(l => l.name.toLowerCase().includes(q) || l.desc.toLowerCase().includes(q));
+  const matchProjects = DATA_PROJECTS.filter(p => p.title.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q) || p.category.toLowerCase().includes(q));
+
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-search').classList.add('active');
+  currentPage = 'search';
+
+  document.getElementById('searchSubtitle').textContent = `${matchLabs.length + matchProjects.length} resultado(s) para "${query}"`;
+  const res = document.getElementById('searchResults');
+  let html = '';
+  if (matchLabs.length > 0) {
+    html += `<h3 style="font-size:16px;font-weight:700;margin-bottom:14px;color:var(--text2)">Laboratórios</h3>`;
+    html += `<div class="labs-grid" style="margin-bottom:28px">${matchLabs.map(l => labCardHTML(l)).join('')}</div>`;
+  }
+  if (matchProjects.length > 0) {
+    html += `<h3 style="font-size:16px;font-weight:700;margin-bottom:14px;color:var(--text2)">Projetos</h3>`;
+    html += `<div class="projects-grid">${matchProjects.map(p => projectCardHTML(p)).join('')}</div>`;
+  }
+  if (html === '') html = `<div class="empty"><i class="ti ti-search"></i><p>Nenhum resultado encontrado.</p></div>`;
+  res.innerHTML = html;
+}
+
+// ================================================================
+// NOTIFICATIONS
+// ================================================================
+let notifOpen = false;
+function toggleNotif() {
+  notifOpen = !notifOpen;
+  document.getElementById('notifPanel').classList.toggle('open', notifOpen);
+}
+function markRead(el) {
+  el.classList.remove('unread');
+  updateNotifDot();
+}
+function markAllRead() {
+  document.querySelectorAll('.notif-item.unread').forEach(el => el.classList.remove('unread'));
+  updateNotifDot();
+}
+function updateNotifDot() {
+  const hasUnread = document.querySelectorAll('.notif-item.unread').length > 0;
+  const btn = document.getElementById('notifBtn');
+  if (hasUnread) btn.classList.add('notif-dot');
+  else btn.classList.remove('notif-dot');
+}
+
+// Close panels when clicking outside
+document.addEventListener('click', function(e) {
+  const panel = document.getElementById('notifPanel');
+  const btn = document.getElementById('notifBtn');
+  if (notifOpen && !panel.contains(e.target) && !btn.contains(e.target)) {
+    notifOpen = false;
+    panel.classList.remove('open');
+  }
+});
+
+// ================================================================
+// THEME TOGGLE
+// ================================================================
+function toggleTheme() {
+  const html = document.documentElement;
+  const isDark = html.dataset.theme === 'dark';
+  html.dataset.theme = isDark ? 'light' : 'dark';
+  document.getElementById('themeIcon').className = isDark ? 'ti ti-moon' : 'ti ti-sun';
+}
+
+// ================================================================
+// SIDEBAR TOGGLE (mobile)
+// ================================================================
+function toggleSidebar() {
+  const sb = document.getElementById('sidebar');
+  const ov = document.getElementById('sidebarOverlay');
+  const open = sb.classList.toggle('open');
+  ov.style.display = open ? 'block' : 'none';
+}
+
+// ================================================================
+// LOGIN MODAL
+// ================================================================
+function openLogin() {
+  document.getElementById('loginModal').classList.add('open');
+}
+function closeLogin() {
+  document.getElementById('loginModal').classList.remove('open');
+}
+function setLoginTab(role, el) {
+  document.querySelectorAll('.login-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
+function fakeLogin() {
+  closeLogin();
+  // Update avatar
+  document.querySelector('.user-info p').textContent = 'Aluno Conectado';
+  document.querySelector('.user-info span').textContent = 'aluno@sesi.edu.br';
+  document.querySelector('.avatar').textContent = 'A';
+  alert('Login realizado com sucesso! Bem-vindo à plataforma SESI.');
+}
+
+// Close modal clicking outside
+document.getElementById('loginModal').addEventListener('click', function(e) {
+  if (e.target === this) closeLogin();
+});
+
+// ================================================================
+// INIT
+// ================================================================
+renderHome();
+</script>
+</body>
+</html>
