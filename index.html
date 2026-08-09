@@ -1681,6 +1681,27 @@ function renderProjects(filter) {
   const filtered = filter ? DATA_PROJECTS.filter(p => p.category === filter) : DATA_PROJECTS;
   document.getElementById('allProjects').innerHTML = filtered.map(p => projectCardHTML(p)).join('');
 }
+   function renderOlimpiadas(filter) {
+  const categories = ['Todos', ...new Set(DATA_OLIMPIADAS.map(p => p.category))];
+  const filtersEl = document.getElementById('olimpiadasFilters');
+  filtersEl.innerHTML = categories.map(c =>
+    `<button class="filter-btn ${(!filter && c === 'Todos') || filter === c ? 'active' : ''}" onclick="renderOlimpiadas('${c === 'Todos' ? '' : c}')">${c}</button>`
+  ).join('');
+
+  const filtered = filter ? DATA_OLIMPIADAS.filter(p => p.category === filter) : DATA_OLIMPIADAS;
+  document.getElementById('allOlimpiadas').innerHTML = filtered.map(p => projectCardHTML(p)).join('');
+}
+
+function renderRoboticaCompetitiva(filter) {
+  const categories = ['Todos', ...new Set(DATA_ROBOTICA.map(p => p.category))];
+  const filtersEl = document.getElementById('roboticaFilters');
+  filtersEl.innerHTML = categories.map(c =>
+    `<button class="filter-btn ${(!filter && c === 'Todos') || filter === c ? 'active' : ''}" onclick="renderRoboticaCompetitiva('${c === 'Todos' ? '' : c}')">${c}</button>`
+  ).join('');
+
+  const filtered = filter ? DATA_ROBOTICA.filter(p => p.category === filter) : DATA_ROBOTICA;
+  document.getElementById('allRobotica').innerHTML = filtered.map(p => projectCardHTML(p)).join('');
+}
 
 // ================================================================
 // PROJECT DETAIL MODAL (inline)
