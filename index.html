@@ -1417,7 +1417,9 @@ function navigate(page) {
   if (page === 'labs') renderLabs();
   if (page === 'projects') renderProjects();
   if (page === 'videos') renderVideos();
-  if (page === 'favorites') renderFavorites();
+  if (page === 'favorites') renderFavorites(); 
+  if (page === 'olimpiadas') renderOlimpiadas();
+  if (page === 'robotica-competitiva') renderRoboticaCompetitiva();
   // Close sidebar on mobile
   if (window.innerWidth <= 768) {
     document.getElementById('sidebar').classList.remove('open');
